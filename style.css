@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background:#fafafa;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 16px;
+}
+
+.card {
+    background: white;
+    width: 360px;
+    max-width: 360px;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Simple fase-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo / header */
+.logo {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #737373;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: #b2b2b2;
+    outline: none;
+    box-shadow: 0 0 0 1px #b2b2b2;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.2s;
+}
+
+button:hover {
+     opacity: 0.95;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+     transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+#status {
+    display: block;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #737373;
+}
+
+/* Link-style button for second page */
+.link-btn {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+    .card {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}
