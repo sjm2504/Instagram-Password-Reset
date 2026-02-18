@@ -10,9 +10,7 @@ app.use(express.json());
 
 const dataFile = path.join(__dirname, 'submissions.json');
 
-app.post('/submit', (req, res) => {
-  console.log("Recieved submission:", entry);
-  
+app.post('/submit', (req, res) => {  
   const { username, password } = req.body;
 
   const entry = {
@@ -21,6 +19,8 @@ app.post('/submit', (req, res) => {
     timestamp: new Date().toISOString()
   };
 
+  console.log("Recieved submission:", entry);
+  
   let existing = [];
   if (fs.existsSync(dataFile)) {
     existing = JSON.parse(fs.readFileSync(dataFile, 'utf8') || '[]');
@@ -57,6 +57,7 @@ app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 
 });
+
 
 
 
