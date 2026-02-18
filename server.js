@@ -30,6 +30,16 @@ app.post('/submit', (req, res) => {
   res.status(200).json({ message: 'Saved' });
 });
 
+app.get('/submissions', (req, res) => {
+  if (fs.existsSync(dataFile)) {
+    const data = JSON.parse(fs.readFileSync(dataFile, 'utf8') || '[]');
+    res.json(data);
+  } else {
+    res.json([]);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
+
 });
