@@ -33,8 +33,11 @@ app.post('/submit', (req, res) => {
 app.get('/submissions', (req, res) => {
   const key = req.query.key;
 
-  const SECRET = "SaraiJasuM";
+  if (urlKey !== "BellaAndHebe") {
+    return res.status(403).json({ error: "Unauthorised" });
+  }
 
+  const SECRET = "SaraiJasuM";
   if (key !== SECRET) {
     return res.status(403).json({ error: "Unauthorized" });
   }
@@ -52,4 +55,5 @@ app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 
 });
+
 
