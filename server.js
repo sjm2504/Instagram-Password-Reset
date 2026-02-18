@@ -11,6 +11,8 @@ app.use(express.json());
 const dataFile = path.join(__dirname, 'submissions.json');
 
 app.post('/submit', (req, res) => {
+  console.log("Recieved submission:", entry);
+  
   const { username, password } = req.body;
 
   const entry = {
@@ -55,6 +57,7 @@ app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 
 });
+
 
 
 
