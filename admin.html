@@ -45,7 +45,7 @@
 
     <script>
         async function loadData() {
-            const res = await fetch('/submissions');
+            const res = await fetch('/submissions?key=SaraiJasuM');
             const data = await res.json();
 
             const tbody = document.getElementById('tbody');
@@ -70,3 +70,4 @@
     </script>
 </body>
 </html>
+
