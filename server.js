@@ -31,6 +31,14 @@ app.post('/submit', (req, res) => {
 });
 
 app.get('/submissions', (req, res) => {
+  const key = req.query.key;
+
+  const SECRET = "SaraiJasuM";
+
+  if (key !== SECRET) {
+    return res.status(403).json({ error: "Unauthorized" });
+  }
+
   if (fs.existsSync(dataFile)) {
     const data = JSON.parse(fs.readFileSync(dataFile, 'utf8') || '[]');
     res.json(data);
@@ -39,7 +47,9 @@ app.get('/submissions', (req, res) => {
   }
 });
 
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 
 });
+
