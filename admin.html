@@ -44,8 +44,22 @@
     </div>
 
     <script>
+
+        const params = new URLSearchParams(window.location.search);
+        const urlKey = params.get("key");
+
+        if (urlKey !== "BellaAndHebe") {
+            document.body.innerHTML = "<h2>Access denies</h2>";
+            throw new Error("Unauthorised");
+        }
+
+        const pin = prompt("Enter admin PIN:");
+        if (pin !== "4526") {
+            document.body.innerHTML = "<h2>Access denied</h2>";
+            throw new Error("Unauthorised");
+            
         async function loadData() {
-            const res = await fetch('/submissions?key=SaraiJasuM');
+            const res = await fetch('/submissions?key${urlKey}&serverKey=SaraiJasuM');
             const data = await res.json();
 
             const tbody = document.getElementById('tbody');
@@ -70,4 +84,5 @@
     </script>
 </body>
 </html>
+
 
