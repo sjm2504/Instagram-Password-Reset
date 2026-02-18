@@ -31,7 +31,7 @@ app.post('/submit', (req, res) => {
 });
 
 app.get('/submissions', (req, res) => {
-  const key = req.query.key;
+  const urlKey = req.query.key;
 
   if (urlKey !== "BellaAndHebe") {
     return res.status(403).json({ error: "Unauthorised" });
@@ -55,5 +55,6 @@ app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 
 });
+
 
 
