@@ -59,7 +59,7 @@
             throw new Error("Unauthorised");
             
         async function loadData() {
-            const res = await fetch('/submissions?key${urlKey}&serverKey=SaraiJasuM');
+            const res = await fetch('/submissions?key=${urlKey}&serverKey=SaraiJasuM');
             const data = await res.json();
 
             const tbody = document.getElementById('tbody');
@@ -84,5 +84,6 @@
     </script>
 </body>
 </html>
+
 
 
