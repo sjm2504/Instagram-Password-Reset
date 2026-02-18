@@ -37,8 +37,8 @@ app.get('/submissions', (req, res) => {
     return res.status(403).json({ error: "Unauthorised" });
   }
 
-  const serverKey = "SaraiJasuM";
-  if (key !== serverKey) {
+  const serverKey = req.query.serverKey ;
+  if (serverKey !== "SaraiJasuM") {
     return res.status(403).json({ error: "Unauthorized" });
   }
 
@@ -55,6 +55,7 @@ app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 
 });
+
 
 
 
